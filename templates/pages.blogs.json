@@ -1,0 +1,94 @@
+{
+    "sections": {
+      "main": {
+        "type": "main-blog",
+        "disabled": true,
+        "settings": {
+          "layout": "collage",
+          "show_image": true,
+          "image_height": "medium",
+          "show_date": true,
+          "show_author": false,
+          "padding_top": 36,
+          "padding_bottom": 36
+        }
+      },
+      "1657860594d61502ea": {
+        "type": "blogs-hero-banner",
+        "settings": {
+          "bg_image": "shopify:\/\/shop_images\/Rectangle_15_3.png",
+          "header": "the wine blog",
+          "paragraph": "Cultivate your love of wine by exploring our Wine Insiders blog! We’re always adding helpful food pairing guides; new wine showcases; ideas from sommeliers and chefs; and profiles of top wine regions, varietals, and winemakers. There is so much to learn--it’s like school, if the homework were delicious.",
+          "button_text": "Learn More",
+          "button_link": "shopify:\/\/pages\/wine-101-landing-page"
+        }
+      },
+      "16578607502a948355": {
+        "type": "blogs-category-search",
+        "settings": {
+          "load_button_text": "Show More Wine Guides"
+        }
+      },
+      "16578606072b14559d": {
+        "type": "blogs-featured-posts",
+        "blocks": {
+          "358bf041-da5c-4997-adf5-ac8f15bf3e6d": {
+            "type": "Posts",
+            "settings": {
+              "sub_feature_blog": "blogs\/how-to-become-a-sommelier"
+            }
+          },
+          "6bf26660-9614-4347-b415-feccf21e57d5": {
+            "type": "Posts",
+            "settings": {
+              "sub_feature_blog": "blogs\/11-interesting-facts-about-california-wine"
+            }
+          },
+          "3cec36c4-cfc4-4f67-9447-79c34e090feb": {
+            "type": "Posts",
+            "settings": {
+              "sub_feature_blog": "blogs\/the-ultimate-guide-to-wine-cocktails"
+            }
+          },
+          "adf24732-f67a-42fa-883f-69de6970618e": {
+            "type": "Posts",
+            "settings": {
+              "sub_feature_blog": "blogs\/wine-pairings-for-the-chocolate-lover"
+            }
+          }
+        },
+        "block_order": [
+          "358bf041-da5c-4997-adf5-ac8f15bf3e6d",
+          "6bf26660-9614-4347-b415-feccf21e57d5",
+          "3cec36c4-cfc4-4f67-9447-79c34e090feb",
+          "adf24732-f67a-42fa-883f-69de6970618e"
+        ],
+        "settings": {
+          "header": "Featured Posts",
+          "main_feature_blog": "blogs\/how-many-calories-are-in-a-glass-of-red-wine",
+          "main_feature_tag": "MOST RECENT ARTICLE"
+        }
+      },
+      "1657860709bfaec56e": {
+        "type": "wine-101-email-list",
+        "settings": {
+          "header": "Join Our Email List",
+          "paragraph": "Stay up to date on Insider deals and wine education!"
+        }
+      },
+      "16578607342f2147c1": {
+        "type": "blogs-listing",
+        "settings": {
+          "load_button_text": "Show More Wine Guides"
+        }
+      }
+    },
+    "order": [
+      "main",
+      "1657860594d61502ea",
+      "16578607502a948355",
+      "16578606072b14559d",
+      "1657860709bfaec56e",
+      "16578607342f2147c1"
+    ]
+  }
