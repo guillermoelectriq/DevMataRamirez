@@ -1,0 +1,144 @@
+{
+    "sections": {
+      "benefits-hero": {
+        "type": "benefits-hero",
+        "settings": {
+            "bg_image": "shopify:\/\/shop_images\/Image_place_holder.png",
+            "bg_image_mb": "shopify:\/\/shop_images\/Image_place_holder_1.png",
+            "heading": "Soylent & Weight Management",
+            "description": "Soylent shakes, powders, and bars are made with complete nutrition in mind, packed with everything you need and nothing you don’t. Whether you’re looking to gain, lose, or maintain your weight, Soylent makes tracking macros and micros as easy (and delicious) as possible.",
+            "bg_color": "#b1d6b4"
+        }
+      },
+      "benefits-stats": {
+        "type": "benefits-stats",
+        "blocks": {
+            "01409f8a-5154-43b9-878b-5af372f09d37": {
+              "type": "hb-stat",
+              "settings": {
+                "title": "1 in 3",
+                "description": "Sed nulla ut adipiscing feugiat nibh nulla viverra sit pretium ac nulla."
+              }
+            },
+            "bf3189b1-cc61-4ddf-98d6-574a3b31d2df": {
+              "type": "hb-stat",
+              "settings": {
+                "title": "123,456",
+                "description": "Sed nulla ut adipiscing feugiat nibh nulla viverra sit pretium ac nulla."
+              }
+            },
+            "3f3578a5-e63a-4995-9067-33f8149ed8ed": {
+              "type": "hb-stat",
+              "settings": {
+                "title": "123,456",
+                "description": "Sed nulla ut adipiscing feugiat nibh nulla viverra sit pretium ac nulla."
+              }
+            }
+          },
+          "block_order": [
+            "01409f8a-5154-43b9-878b-5af372f09d37",
+            "bf3189b1-cc61-4ddf-98d6-574a3b31d2df",
+            "3f3578a5-e63a-4995-9067-33f8149ed8ed"
+          ],
+        "settings": {
+        }
+      },
+      "benefits-cta": {
+        "type": "benefits-cta",
+        "settings": {
+            "video_url": "https:\/\/youtu.be\/7Rb_ly8TMa4",
+            "header": "Quam neque fringilla orci platea Felis sit",
+            "description": "Sapien nisi, turpis amet, urna ac libero sodales. Malesuada nunc adipiscing duis ac donec. Turpis id quam eleifend faucibus orci sit dolor. Vel placerat non id nec eget pretium faucibus viverra amet. Neque dolor egestas hendrerit libero ut. Porta eu tortor dui odio.",
+            "btn_text": "Call to action",
+            "btn_link": "",
+            "reverese_layout": false
+        }
+      },
+      "benefits-points": {
+        "type": "benefits-points",
+        "blocks": {
+            "f775bc7d-ebe5-438f-9402-bbc6c2d6dbe1": {
+              "type": "hb-point",
+              "settings": {
+                "icon": "shopify:\/\/shop_images\/Copy_of_Heart_Health_1.png",
+                "title": "Complete Nutrition",
+                "description": "Our formulas contain an optimal amount of carbohydrates, protein, healthy fats, vitamins and minerals you need to keep you feeling full and focused throughout the day."
+              }
+            },
+            "fd542f26-2c08-43be-aa2a-dd165895ec63": {
+              "type": "hb-point",
+              "settings": {
+                "icon": "shopify:\/\/shop_images\/Copy_of_Fruit_1.png",
+                "title": "Convenient & Pre-Portioned",
+                "description": "No need to think about macro\/micro-counting when it’s all packaged into a convenient bottle. No prep required, just grab and go knowing you’ll have all the nutrition you need."
+              }
+            },
+            "eed2d1f2-37ad-4f41-a71d-545b7c536973": {
+              "type": "hb-point",
+              "settings": {
+                "icon": "shopify:\/\/shop_images\/Taste_Icon_1.png",
+                "title": "Creamy, Delicious Taste",
+                "description": "Managing your weight goals shouldn’t mean you sacrifice taste or have to eat foods you don’t like. Soylent has a variety of flavors so you can switch it up during the week or stick with your favorite."
+              }
+            }
+          },
+          "block_order": [
+            "f775bc7d-ebe5-438f-9402-bbc6c2d6dbe1",
+            "fd542f26-2c08-43be-aa2a-dd165895ec63",
+            "eed2d1f2-37ad-4f41-a71d-545b7c536973"
+          ],
+          "settings": {
+            "header": "How Soylent Can Help"
+          }
+      },
+      "benefits-reviews": {
+        "type": "benefits-reviews",
+        "blocks": {
+            "dc9a098e-7244-4316-aa24-99cd382b56d2": {
+              "type": "hb-point",
+              "settings": {
+                "reviewed_product": "soylent-drink-creamy-chocolate-prepaid-3-month",
+                "review": "“I love the subtle chocolate flavor of this drink. It's not overwhelmingly chocolatey. I drink Soylent kind of like a protein shake since it has the same amount of protein as a protein shake but tastes so much better since it's also higher in calories. I'm one of those people who has trouble gaining weight, and working out regularly means that I need more calories.”",
+                "reviewer": "Keerthana",
+                "reviewed_product_title": "Creamy Chocolate",
+                "btn_text": "SHOP CREAMY CHOCOLATE",
+                "dark_mode": false
+              }
+            },
+            "dd74b192-2b5f-4886-ace9-8534305a11b4": {
+              "type": "hb-point",
+              "settings": {
+                "reviewed_product": "soylent-drink-original",
+                "review": "“I have found Soylent to be an excellent addition to my diet. I have used it in a number of scenarios. Initially, I used it to jumpstart a weight loss program. It gave me an easy way to measure my caloric intake and be confident that I was getting the necessary nutrients while dropping some pounds. Since that time, I have continued to use Soylent as a way to maintain my current weight after my weight loss. Instead of reaching for Ramen or a frozen pizza, I reach for Soylent. It's filling, nutritious and tastes great too.",
+                "reviewer": "Stephen",
+                "reviewed_product_title": "Original RTD",
+                "btn_text": "SHOP ORIGINAL",
+                "dark_mode": true
+              }
+            }
+          },
+          "block_order": [
+            "dc9a098e-7244-4316-aa24-99cd382b56d2",
+            "dd74b192-2b5f-4886-ace9-8534305a11b4"
+          ],
+          "settings": {
+            "header": "You may like...",
+            "reviews_height": 380
+          }
+      },
+      "benefits-articles": {
+        "type": "benefits-articles",
+        "settings": {
+        }
+      }
+    },
+    "order": [
+      "benefits-hero",
+      "benefits-stats",
+      "benefits-cta",
+      "benefits-points",
+      "benefits-reviews",
+      "benefits-articles"
+    ]
+  }
+  

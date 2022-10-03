@@ -1,0 +1,160 @@
+<div class="hb-articles">
+  <div class="hb-articles-wrapper">
+    <h2 class="hb-articles__header">{{ section.settings.header }}</h2>
+    <div class="hb-article-card__wrapper">
+      {% for block in section.blocks %}
+        {% if block.type == 'hb-article' %}
+          {% if block.settings.hb_article_pick != blank %}
+            <div class="hb-article-card">
+              <h2 class="hb-article-card__header">{{ block.settings.hb_article_pick.title }}</h2>
+              <div class="hb-article-card__description">{{ block.settings.hb_article_pick.excerpt_or_content | truncate: 150 }}</div>
+              <a class="hb-article-card__btn" href="{{ block.setting.hb_article_pick.url }}">READ MORE ></a>
+            </div>
+          {% endif %}
+        {% elsif block.type == 'hb-page' %}
+          {% if block.settings.hb_article_pick != blank %}
+            <div class="hb-article-card">
+              <h2 class="hb-article-card__header">{{ block.settings.hb_page_title }}</h2>
+              <div class="hb-article-card__description">{{ block.settings.hb_page_pick.description }}</div>
+              <a class="hb-article-card__btn" href="{{ block.setting.hb_page_pick.url }}">READ MORE ></a>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .hb-articles-wrapper {
+    padding: 48px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hb-articles__header {
+    font-size: 700;
+    font-size: 30px;
+    font-family: Apercu;
+    color: #221F20;
+    margin-bottom: 20px;
+  }
+  .hb-article-card__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .hb-article-card {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    background-color: #F7F7F7;
+    padding: 32px 20px;
+  }
+  .hb-article-card {
+    display: flex;
+    background-color: #F7F7F7;
+    padding: 32px 20px;
+  }
+  .hb-article-card__header {
+    font-family: Apercu;
+    font-size: 24px;
+    font-weight: 700;
+    color: #221F20;
+    margin-bottom: 8px;
+  }
+  .hb-article-card__description {
+    font-family: Apercu;
+    font-size: 18px;
+    font-weight: 300;
+    color: #221F20;
+    margin-bottom: 8px;
+  }
+  .hb-article-card__description p, .hb-article-card__description span {
+    font-weight: 300 !important;
+  }
+  .hb-article-card__btn {
+    font-family: Apercu;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    color: #47AF19;
+    font-weight: 500;
+  }
+  .hb-article-card__btn:hover {
+    color: #47AF19;
+  }
+  @media screen and (min-width: 768px){
+    .hb-articles-wrapper {
+      padding: 84px 20px;
+    }
+    .hb-articles__header {
+      font-size: 50px;
+      margin-bottom: 40px;
+    }
+    .hb-article-card__wrapper {
+      flex-direction: row;
+      gap: 36px;
+    }
+    .hb-article-card {
+      display: flex;
+      flex: 1;
+      background-color: #F7F7F7;
+      padding: 32px 20px;
+    }
+    .hb-article-card__header {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Benefits Articles",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hb-article",
+      "name": "Benefits Article",
+      "settings": [
+        {
+          "type": "article",
+          "id": "hb_article_pick",
+          "label": "Recommended Article"
+        }
+      ]
+    },
+    {
+      "type": "hb-page",
+      "name": "Benefits Page",
+      "settings": [
+        {
+          "type": "url",
+          "id": "hb_page_pick",
+          "label": "Recommended Page"
+        },
+        {
+          "type": "text",
+          "id": "hb_page_title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "hb_page_description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Learn More",
+      "category": "Learn More"
+    }
+  ]
+}
+{% endschema %}

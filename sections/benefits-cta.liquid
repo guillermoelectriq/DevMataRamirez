@@ -1,0 +1,232 @@
+<script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
+
+<div class="hb-cta {% if section.settings.reverese_layout == true %}hb-cta-reverse-layout{% endif %}">
+    {% if section.settings.video_url != blank %}
+        <div class="hb-cta-video">
+            <div class="plyr__video-embed" id="player_{{ section.id }}">
+                <iframe
+                src="{{ section.settings.video_url }}"
+                allowfullscreen
+                allowtransparency
+                allow="autoplay"
+                ></iframe>
+            </div>
+        </div>
+    {% elsif section.settings.image != blank %}
+        <div class="hb-cta-image">
+            <img src="{{ section.settings.image | img_url: 'master' }}">
+        </div>
+    {% endif %}
+    <div class="hb-cta-info">
+        <h2 class="hb-cta-info__header">{{ section.settings.header }}</h2>
+        <p class="hb-cta-info__description">{{ section.settings.description }}</p>
+        <a class="hb-cta-info__btn" href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}</a>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', event => {
+        var players = Array.from(document.querySelectorAll('.plyr__video-embed')).map((p) => new Plyr(p));
+
+        for(let x = 0; x < players.length; x++){
+            players[x].ratio = '4:3'
+        }
+    })
+</script>
+
+<style>
+    .hb-cta-container {
+        padding: 40px 20px;
+        width: 100%;
+    }
+    .hb-cta {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .hb-cta-reverse-layout {
+        flex-direction: column;
+    }
+    .hb-cta-video, .hb-cta-info, .hb-cta-image {
+        width: 100%;
+    }
+    .hb-cta-image {
+        display: block;
+        position: relative;
+        padding-bottom: 71%;
+    }
+    .hb-cta-image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    .hb-cta-info {
+        padding: 32px 20px;
+        background-color: #F7F7F7;
+    }
+    .hb-cta-info__header {
+        font-family: Apercu;
+        font-size: 24px;
+        font-weight: 700;
+        color: #221F20;
+        margin-bottom: 16px;
+    }
+    .hb-cta-info__description {
+        font-family: Apercu;
+        font-size: 18px;
+        font-weight: 300;
+        color: #221F20;
+        margin-bottom: 16px;
+    }
+    .hb-cta-info__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 55px; 
+        background-color: #fff;
+        border: 1px solid #221F20;
+        color: #221F20;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 1.9px;
+    }
+    .plyr--video {
+        width: 100%;
+    }
+    .plyr__video-embed {
+        --plyr-color-main: #221F20 !important;
+    }
+    .plyr__controls, .plyr__control--overlaid {
+        --plyr-color-main: #221F20 !important;
+    }
+    .plyr.plyr--stopped .plyr__controls { 
+        display: none 
+    }
+    .plyr__poster {
+        background-size: cover;
+    }
+    {% if section.settings.video_poster != blank %}
+    .plyr__poster {
+        background-image: url("{{ section.settings.video_poster | img_url: 'master' }}") !important;
+        background-size: cover;
+    }
+    {% endif %}
+    @media screen and (min-width: 768px){
+        .hb-cta-container {
+            padding: 80px 20px;
+        }
+        .plyr {
+            height: 100%;
+        }
+        .hb-cta {
+            flex-direction: row;
+        }
+        .hb-cta-reverse-layout {
+            flex-direction: row-reverse;
+        }
+        .hb-cta-video, .hb-cta-info, .hb-cta-image {
+            width: 50%;
+        }
+        .hb-cta-image {
+            padding-bottom: 0;
+        }
+        .hb-cta-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .hb-cta-info {
+            padding: 49px 36px;
+        }
+        .hb-cta-info__header {
+            font-size: 50px;
+        }
+        .hb-cta-info__btn {
+            width: 360px;
+            height: 55px; 
+            font-size: 16px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Benefits Video CTA",
+  "class": "hb-cta-container",
+  "settings": [
+    {
+        "type": "header",
+        "content": "Featured Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "'Featured Image' will only display if the 'Featured Video' field below is left blank, otherwise the 'Featured Video' field will always take priority."
+    },
+    {
+        "type": "header",
+        "content": "Featured Video"
+    },
+    {
+        "type": "video_url",
+        "accept": ["vimeo", "youtube"],
+        "id": "video_url",
+        "label": "Video URL",
+        "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+    },
+    {
+        "type": "image_picker",
+        "id": "video_poster",
+        "label": "Video Poster Image"
+    },
+    {
+        "type": "header",
+        "content": "Featured Text Content"
+    },
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+        "type": "checkbox", 
+        "id": "reverese_layout",
+        "label": "Reverse Content Layout",
+        "info": "Toggle checkbox on, to flip the layout of the video and text content."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Video CTA",
+      "category": "Video"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,129 @@
+<div class="hb-points">
+    <div class="hb-points-wrapper">
+        <h2 class="hb-points__header">{{ section.settings.header }}</h2>
+        <div class="hb-points__wrapper">
+            {% for block in section.blocks %}
+                <div class="hb-points-card">
+                    <div class="hb-points-card__icon-wrapper">
+                        <img class="hb-points-card__icon" src="{{ block.settings.icon | img_url: 'master' }}">
+                    </div>
+                    <h2 class="hb-points-card__header">{{ block.settings.title }}</h2>
+                    <p class="hb-points-card__description">{{ block.settings.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .hb-points {
+        padding: 48px 20px;
+    }
+    .hb-points-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .hb-points__header {
+        font-family: Apercu;
+        font-size: 24px;
+        font-weight: 700;
+        color: #221F20;
+        text-align: center;
+        margin-bottom: 32px;
+    }
+    .hb-points__wrapper {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .hb-points-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex: 1;
+    }
+    .hb-points-card__icon-wrapper {
+        width: 98px;
+        height: 98px;
+        margin-bottom: 20px;
+    }
+    .hb-points-card__icon {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+    }
+    .hb-points-card__header {
+        font-family: Apercu;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        color: #221F20;
+        margin-bottom: 8px;
+    }
+    .hb-points-card__description {
+        font-family: Apercu;
+        font-size: 18px;
+        text-align: center;
+        color: #221F20;
+    }
+    @media screen and (min-width: 768px){
+        .hb-points {
+            padding: 84px 20px;
+        }
+        .hb-points__header {
+            font-size: 50px;
+            margin-bottom: 72px;
+        }
+        .hb-points__wrapper {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 36px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Benefits Points",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header"
+    }
+  ],
+  "blocks": [
+  {
+      "type": "hb-point",
+      "name": "Benefits Points",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+  }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Points",
+      "category": "Points"
+    }
+  ]
+}
+{% endschema %}

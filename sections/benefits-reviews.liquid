@@ -1,0 +1,342 @@
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide-core.min.css">
+
+<div class="hb-reviews">
+    <div class="hb-reviews__splide splide">
+        <div class="splide__track">
+            <div class="splide__list">
+            {% for block in section.blocks %}
+                <div class="splide__slide">
+                    <div class="hb-reviews-card" style="background-color: {{ block.settings.reviewed_product.metafields.custom_fields['hero_background_color'] }};">
+                        <img class="hb-reviews-card__product-img" src="{{ block.settings.reviewed_product.featured_image | img_url: 'master' }}">
+                        <div class="hb-reviews-text">
+                            <p class="hb-reviews-text__review {% if block.settings.dark_mode == true %}dark__mode{% endif %}">{{ block.settings.review }}</p>
+                            <a class="hb-reviews-text__btn {% if block.settings.dark_mode == true %}dark__mode{% endif %}" href="{{ block.settings.reviewed_product.url }}">{{ block.settings.btn_text }}</a>
+                        </div>
+                    </div>
+                    <div class="hb-reviews-reviewer">
+                        <p class="hb-reviews-reviewer__reviewer">{{ block.settings.reviewer }}</p>
+                        <p class="hb-reviews-reviewer__title">{{ block.settings.reviewed_product_title }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="splide__arrows splide__arrows--ltr">
+            <button
+              class="splide__arrow splide__arrow--prev"
+              type="button"
+              aria-label="Previous slide"
+              aria-controls="splide01-track"
+            >
+                <svg class="hide__mobile" width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20.498" r="19.5" transform="rotate(-180 20 20.498)" fill="#F7F7F7" stroke="black"/>
+                    <path d="M16 27.383L21.5628 20.498L16 13.613L17.7126 11.498L25 20.498L17.7126 29.498L16 27.383Z" fill="black"/>
+                </svg>     
+                <svg class="hide__desktop" width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.47103 0L7.55864 1.34461L2.94435 7.04926H23V8.95092H2.94449L7.55864 14.6554L6.47103 16L0 8L6.47103 0Z" fill="black"/>
+                </svg>
+            </button>
+            <div class="card-index">
+              <div class="current-card-index">1</div>
+              /
+              <div class="total-cards"></div>
+            </div>
+            <button
+              class="splide__arrow splide__arrow--next"
+              type="button"
+              aria-label="Next slide"
+              aria-controls="splide01-track"
+            >
+                <svg class="hide__mobile" width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20.498" r="19.5" transform="rotate(-180 20 20.498)" fill="#F7F7F7" stroke="black"/>
+                    <path d="M16 27.383L21.5628 20.498L16 13.613L17.7126 11.498L25 20.498L17.7126 29.498L16 27.383Z" fill="black"/>
+                </svg>  
+                <svg class="hide__desktop" style="transform: rotate(180deg);" width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.47103 0L7.55864 1.34461L2.94435 7.04926H23V8.95092H2.94449L7.55864 14.6554L6.47103 16L0 8L6.47103 0Z" fill="black"/>
+                </svg>  
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var main = new Splide('.hb-reviews__splide', {
+    type      : 'fade',
+    rewind    : true,
+    pagination: false,
+    perPage: 1,
+    focus  : 'center',
+  });
+
+  main.mount();
+
+  document.querySelector('.total-cards').textContent = main.length;
+
+  main.on('move', function() {
+    document.querySelector('.current-card-index').textContent = main.index + 1;
+  })
+});
+</script>
+
+<style>
+    .hb-reviews {
+        padding: 40px 20px;
+    }
+    .hb-reviews__splide {
+        visibility: visible;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .hb-reviews-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        width: 100%;
+        max-width: 500px;
+        padding: 20px 20px 40px 20px;
+        margin: 0 auto;
+        border: 1px solid #221F20;
+    }
+    .hb-reviews-card__product-img {
+        width: 86px;
+        height: 86px;
+        object-fit: contain;
+        border: 1px solid #221F20; 
+        background-color: #fff;
+    }
+    .hb-reviews-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        gap: 12px;
+    }
+    .hb-reviews-stars {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .hb-reviews-stars img {
+        height: 20px;
+        width: auto;
+    }
+    .hb-reviews-text__review {
+        font-family: Apercu; 
+        font-size: 16px;
+        color: #fff;
+        margin: 0;
+    }
+    .hb-reviews-text__btn {
+        font-family: Apercu;
+        font-size: 16px;
+        color: #fff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+    .hb-reviews-reviewer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 30px 36px;
+        background-color: #fff;
+        border: 1px solid #000;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -30px;
+        max-width: 250px;
+    }
+    .hb-reviews-reviewer__reviewer {
+        font-family: Apercu; 
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1;
+        color: #221F20;
+        margin-bottom: 4px;
+        bottom: 0;
+    }
+    .hb-reviews-reviewer__title {
+        font-family: Apercu;
+        font-size: 18px;
+        line-height: 1;
+        color: #221F20;
+        margin: 0;
+    }
+    .dark__mode {
+        color: #221F20;
+    }
+    .splide__arrows {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+    .splide__arrow {
+        top: 0;
+        transform: none;
+        position: relative;
+        background-color: transparent;
+    }
+    .splide__arrow--prev {
+        left: 0;
+    }
+    .splide__arrow--next {
+        right: 0;
+    }
+    .splide__arrow--prev svg {
+        transform: rotate(0);
+    }
+    .card-index {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        font-family: Apercu;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .hide__mobile {
+        display: none;
+    }
+    .hide__desktop {
+        display: initial;
+    }
+    @media screen and (min-width: 768px){
+        .hb-reviews {
+            padding: 80px 20px;
+        }
+        .hb-reviews__splide {
+            height: {{ section.settings.reviews_height }}px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hb-reviews-card__product-img {
+            width: 224px;
+            height: 224px;
+        }
+        .hb-reviews-card {
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 830px;
+            padding: 72px 30px;
+        }
+        .hb-reviews-reviewer {
+            max-width: 362px;
+        }
+        .hb-reviews-text{
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            width: calc(100% - 240px);
+            gap: 16px;
+        }
+        .hb-reviews-stars {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .hb-reviews-stars img {
+            height: 20px;
+            width: auto;
+        }
+        .splide__arrows {
+            position: absolute;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .splide__arrow svg {
+            height: 40px;
+            width: 40px;
+        }
+        .splide__arrow--prev svg {
+            transform: rotate(-180deg);
+        }
+        .card-index {
+            display: none;
+        }
+        .hide__mobile {
+            display: initial;
+        }
+        .hide__desktop {
+            display: none;
+        }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Benefits Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header"
+    },
+    {
+        "type": "range",
+        "id": "reviews_height",
+        "min": 100,
+        "max": 1000,
+        "step": 20,
+        "unit": "px",
+        "label": "Reviews Section Height",
+        "default": 600
+    }
+  ],
+  "blocks": [
+  {
+      "type": "hb-point",
+      "name": "Benefits Reviews",
+      "settings": [
+        {
+            "type": "product",
+            "id": "reviewed_product",
+            "label": "Reviewed Product"
+        },
+        {
+            "type": "text",
+            "id": "review",
+            "label": "Review Text"
+        },
+        {
+            "type": "text",
+            "id": "reviewer",
+            "label": "Reviewers' Name"
+        },
+        {
+            "type": "text",
+            "id": "reviewed_product_title",
+            "label": "Reviewed Product Title"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button Text"
+        },
+        {
+            "type": "checkbox",
+            "id": "dark_mode",
+            "label": "Enable Dark Mode"
+        }
+      ]
+  }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Reviews",
+      "category": "Reviews"
+    }
+  ]
+}
+{% endschema %}

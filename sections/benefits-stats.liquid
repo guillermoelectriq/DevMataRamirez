@@ -1,0 +1,102 @@
+<div class="hb-stats">
+    <div class="hb-stats-cards__wrapper">
+        {% for block in section.blocks %}
+            <div class="hb-stats-card">
+                <h2 class="hb-stats-card__header">{{ block.settings.title }}</h2>
+                <p class="hb-stats-card__description">{{ block.settings.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .hb-stats {
+        padding: 40px 20px;
+    }
+    .hb-stats-cards__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 39px;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .hb-stats-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 300px;
+    }
+    .hb-stats-card__header {
+        font-family: Apercu; 
+        font-weight: 700;
+        font-size: 48px; 
+        margin-bottom: 12px;
+        color: #221F20;
+    }
+    .hb-stats-card__description {
+        font-family: Apercu; 
+        font-weight: 700;
+        font-size: 18px; 
+        line-height: 22px;
+        color: #221F20;
+        text-align: center;
+    }
+    @media screen and (min-width: 768px){
+        .hb-stats {
+            padding: 80px 20px;
+        }
+        .hb-stats-cards__wrapper {
+            flex-direction: row;
+            gap: 36px;
+        }
+        .hb-stats-card {
+            width: auto;
+            flex: 1;
+            max-width: 360px;
+        }
+        .hb-stats-card__header {
+            font-size: 70px; 
+            margin-bottom: 20px;
+        }
+        .hb-stats-card__description {
+            font-size: 20px; 
+            line-height: 25px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Benefits Stats",
+  "settings": [],
+  "blocks": [
+  {
+      "type": "hb-stat",
+      "name": "Benefits Stats",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+  }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Stats",
+      "category": "Stats"
+    }
+  ]
+}
+{% endschema %}
