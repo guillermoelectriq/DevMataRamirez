@@ -1,0 +1,77 @@
+{{ 'wine-101-lp.css' | asset_url | stylesheet_tag }}
+{{ 'wine-101-nav.css' | asset_url | stylesheet_tag }}
+
+<div class="wine-101-nav__wrapper">
+    <div class="wine-101-nav__container">
+        {% for block in section.blocks %}
+            <a href="{{ block.settings.nav_link }}{% if block.settings.nav_tag_handle != blank %}/tagged/{{ block.settings.nav_tag_handle | handleize }}{% endif %}">{{ block.settings.nav_tab }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    var nav = document.querySelector('.wine-101-nav__container');
+
+    var lastScrollTop = 0;
+
+    window.addEventListener("scroll", function(){
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    if (st > lastScrollTop){
+        nav.classList.remove('nav__sticky');
+        nav.classList.add('scrolling__down');
+        nav.classList.remove('scrolling__up');
+    } 
+    else {
+        if( window.scrollY >= 127 ){
+            nav.classList.add('nav__sticky');
+            nav.classList.add('scrolling__up');
+            nav.classList.remove('scrolling__down');
+            nav.style.top = document.querySelector('sticky-header').offsetHeight + "px";
+        }
+        else {
+            nav.classList.remove('nav__sticky');
+        }
+    }
+    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    }, false);
+</script>
+
+{% schema %}
+{
+    "name": "Wine 101 Nav",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "Navigation",
+            "name": "Navigation Tab",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "nav_tab",
+                    "label": "Navigation Tab"
+                },
+                {
+                    "type": "url",
+                    "id": "nav_link",
+                    "label": "Navigation Link"
+                },
+                {
+                    "type": "text",
+                    "id": "nav_tag_handle",
+                    "label": "Navigation Tag"
+                },
+                {
+                    "type": "paragraph",
+                    "content": "Note: The navigation tag must match the tag used for the Wine 101 blogs you wish to link to."
+                }
+            ]
+        }
+    ],
+    "presets": [
+    {
+        "name": "Wine 101 Nav",
+        "category": "ADVANCED LAYOUT"
+    }
+    ]
+}
+{% endschema %}

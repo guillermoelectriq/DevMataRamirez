@@ -1,0 +1,80 @@
+{{ 'blogs-listing.css' | asset_url | stylesheet_tag }}
+
+<div class="blogs-listing__container">
+    <div class="wine-101-blog__gallery-container">
+        {% paginate blogs.blogs.articles by 3 %}
+            <div class="wine-101-blog__gallery-wrapper">
+                {% assign articleCount = blogs.blogs.articles | size %}
+                {% for article in blogs.blogs.articles %}
+                    {% include 'blogs-article-card', article: article %}
+                {% endfor %}
+                {% if articleCount == 0 %}
+          			<h4>No Results</h4>
+          		{% endif %}
+            </div>
+
+            {% if paginate.next %}
+                <div class="load-more__container">
+                    <button class="load-more__button" data-load-more type="button" data-next-url="{{ paginate.next.url }}">
+                        {{ section.settings.load_button_text }}
+                    </button>
+                </div>
+            {% endif %}
+        {% endpaginate %}
+    </div>
+</div>
+
+<script>
+    console.log({{ blogs.blogs.articles | json }})
+    
+    function loadPaginatedArticles(){
+        let loadButton = document.querySelectorAll('.load-more__button');
+        var galleryWrapper = document.querySelectorAll('.wine-101-blog__gallery-wrapper')
+        console.log(loadButton.length);
+
+        for(let x = 0; x < loadButton.length; x++){
+
+            if(!loadButton[x]){
+                return;
+            }
+            loadButton[x].addEventListener('click', event => {
+                let url = loadButton[x].dataset.nextUrl;
+                fetch(url)
+                .then(res => res.text())
+                .then(html => {
+                    const div = document.createElement('div');
+                    div.innerHTML = html;
+                    galleryWrapper[x].innerHTML += div.querySelector('.wine-101-blog__gallery-wrapper').innerHTML;
+                    
+                    if(div.querySelector('.load-more__button')) {
+                        loadButton[x].dataset.nextUrl = div.querySelector('.load-more__button').dataset.nextUrl;
+                    } else{
+                        loadButton[x].style.display = 'none';
+                    }
+                })
+            })
+        }
+    }
+
+    loadPaginatedArticles()
+</script>
+
+{% schema %}
+{
+    "name": "Blogs Listing",
+    "settings": [
+        {
+            "id": "load_button_text", 
+            "type": "text",
+            "label": "Load Blogs Button Text",
+            "default": "Show More Wine Guides"
+        }
+    ],
+    "presets": [
+    {
+        "name": "Blogs Listing",
+        "category": "ADVANCED LAYOUT"
+    }
+    ]
+}
+{% endschema %}

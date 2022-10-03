@@ -1,0 +1,120 @@
+{
+    "sections": {
+      "main": {
+        "type": "main-blog",
+        "disabled": true,
+        "settings": {
+          "layout": "collage",
+          "show_image": true,
+          "image_height": "medium",
+          "show_date": true,
+          "show_author": false,
+          "padding_top": 36,
+          "padding_bottom": 36
+        }
+      },
+      "1657528846990615fc": {
+        "type": "wine-101-featured",
+        "blocks": {
+          "a648f929-ce92-4939-9b10-854cf15be828": {
+            "type": "Collection",
+            "settings": {
+              "featured_collection_tag": "Essential Wine Guides",
+              "featured_article": "wine-101\/the-ultimate-guide-to-sweet-wine",
+              "featured_text": "FEATURED TYPES OF WINE & GRAPES"
+            }
+          },
+          "f8709055-7b7a-463f-a1df-5d4b5f47917c": {
+            "type": "Collection",
+            "settings": {
+              "featured_collection_tag": "Types Of Wine & Grapes",
+              "featured_article": "",
+              "featured_text": "Featured Types of Wines & Grapes"
+            }
+          },
+          "f20441da-a2e1-483a-a5a3-536ed5456fec": {
+            "type": "Collection",
+            "settings": {
+              "featured_collection_tag": "Recipes & Wine Pairings",
+              "featured_article": "wine-101\/apple-pumpkin-sangria",
+              "featured_text": "FEATURED RECIPES & WINE PAIRINGS"
+            }
+          },
+          "593124c7-1456-4c79-9cf7-3f311a9869e4": {
+            "type": "Collection",
+            "settings": {
+              "featured_collection_tag": "WINE SERVING TIPS",
+              "featured_article": "wine-101\/why-and-when-to-decant-wine",
+              "featured_text": "FEATURED WINE SERVING TIPS"
+            }
+          }
+        },
+        "block_order": [
+          "a648f929-ce92-4939-9b10-854cf15be828",
+          "f8709055-7b7a-463f-a1df-5d4b5f47917c",
+          "f20441da-a2e1-483a-a5a3-536ed5456fec",
+          "593124c7-1456-4c79-9cf7-3f311a9869e4"
+        ],
+        "settings": {
+          "button_text": "Read More",
+          "featured_article": "wine-101\/pinot-grigio-wine-guide",
+          "featured_text": "featured types of wine & grapes"
+        }
+      },
+      "1657529495eac28454": {
+        "type": "wine-101-blog",
+        "blocks": {
+          "fe297a2f-c26d-4d59-b48f-3a30d763613f": {
+            "type": "Collection",
+            "settings": {
+              "collection_tag": "Essential Wine Guides",
+              "collection_header": "Essential Wine Guides",
+              "collection_paragraph": "We're going to start high level with guides on white, red, rosé, sparkling, and dessert wines. From there, we're going to break down each varietal, including its history, flavor profile, interesting facts, and best foods to pair it with. Then, we'll provide general vino advice, from the glassware you should be using to the proper serving temperatures."
+            }
+          },
+          "73ff13c0-417c-4a53-9089-703eda2c34e7": {
+            "type": "Collection",
+            "settings": {
+              "collection_tag": "Types Of Wine & Grapes",
+              "collection_header": "Types Of Wine & Grapes",
+              "collection_paragraph": "Learn about the most popular grapes and wine blends in the world. From Cabernet to Pinot, and every varietal in between, our in-depth guides break down everything you need to know about whatever wine you’re interested in. Learn about the history, flavor profile, best food pairings, and much more."
+            }
+          },
+          "39113125-4e23-4bae-8f1c-286920205343": {
+            "type": "Collection",
+            "settings": {
+              "collection_tag": "Recipes & Wine Pairings",
+              "collection_header": "Recipes & Wine Pairings",
+              "collection_paragraph": "We’ve got your wine needs covered, so here are some tips and ideas for you to make the most out of feasting and hosting."
+            }
+          },
+          "288d769e-599c-4027-b039-cccf30451c27": {
+            "type": "Collection",
+            "settings": {
+              "collection_tag": "Wine Serving Tips",
+              "collection_header": "Serving wine",
+              "collection_paragraph": "Wine tastes great as is, but things like decanting a wine or serving it at the right temperature or in the proper glassware can make a difference the more experienced you become!"
+            }
+          }
+        },
+        "block_order": [
+          "fe297a2f-c26d-4d59-b48f-3a30d763613f",
+          "73ff13c0-417c-4a53-9089-703eda2c34e7",
+          "39113125-4e23-4bae-8f1c-286920205343",
+          "288d769e-599c-4027-b039-cccf30451c27"
+        ],
+        "settings": {
+          "header": "types of wine & grapes",
+          "paragraph": "Learn about the most popular grapes and wine blends in the world. From Cabernet to Pinot, and every varietal in between, our in-depth guides break down everything you need to know about whatever wine you’re interested in. Learn about the history, flavor profile, best food pairings, and much more.",
+          "button_text": "view all wine 101 guides",
+          "button_link": "\/blogs\/wine-101",
+          "load_button_text": "Show More Wine Guides"
+        }
+      }
+    },
+    "order": [
+      "main",
+      "1657528846990615fc",
+      "1657529495eac28454"
+    ]
+  }

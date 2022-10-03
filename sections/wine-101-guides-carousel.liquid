@@ -1,0 +1,138 @@
+{{ 'wine-101-lp.css' | asset_url | stylesheet_tag }}
+{{ 'wine-101-guides-carousel.css' | asset_url | stylesheet_tag }}
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide-core.min.css">
+
+{% assign given_tag = section.settings.tag_handle | handleize %}
+
+<div class="wine-101-guides-carousel__container" id="{{ given_tag }}">
+    <div class="wine-101-guides-carousel__header-container">
+        <h2 class="wine-101__carousel-header">{{ section.settings.header }}</h2>
+        <a class="wine-101__btn wine-101__view-all-btn hide__mobile" style="margin-bottom: 16px;" href="/blogs/wine-101/tagged/{{ section.settings.tag_handle | handleize }}">{{ section.settings.button_text }}</a>
+    </div>
+    <p class="wine-101__paragraph">{{ section.settings.paragraph }}</p>
+    <a class="wine-101__btn wine-101__view-all-btn hide__desktop" style="margin-bottom: 24px;" href="/blogs/wine-101/tagged/{{ section.settings.tag_handle | handleize }}">{{ section.settings.button_text }}</a>
+
+    <div class="wine-101-guides-carousel__card-container">
+        <div class="splide wine-101-guides-carousel__splide">
+            <div class="splide__track">
+                <div class="splide__list">
+                    {% for article in blogs.wine-101.articles %}
+                        {% for tag in article.tags %}
+                            {% assign curr_tag = tag | handleize %}
+                            {% if curr_tag == given_tag %}
+                                <div class="splide__slide">
+                                    {% include 'related-guide-card', related_article: article %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Add the progress bar element -->
+            <div class="splide__pagination-progress__container">
+                <div class="splide__arrows splide__arrows--ltr">
+                    <button
+                      class="splide__arrow splide__arrow--prev"
+                      type="button"
+                      aria-label="Previous slide"
+                      aria-controls="splide01-track"
+                    >
+                    <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="50" y="49.5962" width="49" height="49" rx="24.5" transform="rotate(-180 50 49.5962)" fill="white"/>
+                        <path d="M29.5 20.0962L24.5 25.0962L29.5 30.0962L28.5 32.0962L21.5 25.0962L28.5 18.0962L29.5 20.0962Z" fill="black"/>
+                        <rect x="50" y="49.5962" width="49" height="49" rx="24.5" transform="rotate(-180 50 49.5962)" stroke="black"/>
+                    </svg>
+                        
+                    </button>
+                    <button
+                      class="splide__arrow splide__arrow--next"
+                      type="button"
+                      aria-label="Next slide"
+                      aria-controls="splide01-track"
+                    >
+                    <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="0.596191" width="49" height="49" rx="24.5" fill="white"/>
+                        <path d="M21.5 30.0962L26.5 25.0962L21.5 20.0962L22.5 18.0962L29.5 25.0962L22.5 32.0962L21.5 30.0962Z" fill="black"/>
+                        <rect x="1" y="0.596191" width="49" height="49" rx="24.5" stroke="black"/>
+                    </svg>
+                        
+                    </button>
+                </div>
+                <div class="my-slider-progress">
+                <div class="my-slider-progress-bar"></div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Wine 101 Guides Carousel",
+    "settings": [
+        {
+            "id": "header", 
+            "type": "text", 
+            "label": "Header"
+        },
+        {
+            "id": "paragraph", 
+            "type": "text", 
+            "label": "Paragraph"
+        },
+        {
+            "id": "tag_handle", 
+            "type": "text", 
+            "label": "Section Tag"
+        },
+        {
+            "id": "button_text", 
+            "type": "text",
+            "label": "Button Text"
+        }
+    ],
+    "presets": [
+    {
+        "name": "Wine 101 Guides Carousel",
+        "category": "ADVANCED LAYOUT"
+    }
+    ]
+}
+{% endschema %}
+
+<script>
+    var carousels = document.querySelectorAll('.wine-101-guides-carousel__splide');
+
+    for(var x = 0; x < carousels.length; x++){
+        (function(){
+            var splide = new Splide( carousels[x], {
+                perMove: 1,
+                gap: 32,
+                width: 1500,
+                drag: false,
+                breakpoints: {
+                    920: {
+                        gap: 16,
+                        drag: true,
+                    },
+                    550: {
+                        gap: 8,
+                        drag: true,
+                    },
+                }
+            });
+
+            var bar = splide.root.querySelector( '.my-slider-progress-bar' );
+
+            splide.on( 'mounted move', function () {
+                var end = splide.Components.Controller.getEnd() + 1;
+                bar.style.width = String( 100 * ( splide.index + 1 ) / end ) + '%';
+            });
+
+            splide.mount();
+        })()
+    }
+</script>

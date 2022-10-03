@@ -1,0 +1,59 @@
+{{ 'blogs-search.css' | stylesheet_tag | asset_url }}
+
+{% paginate search.results by 12 %}
+
+<div class="layout-content-wrapper">
+  <div class="container" style="position: relative;">
+
+    {% capture title %}
+      {% if search.performed %}
+        {{ 'general.search.results_for_html' | t: terms: search.terms }}
+      {% else %}
+        {{ 'general.search.title' | t }}
+      {% endif %}      
+    {% endcapture %}
+
+    {% capture subtitle %}
+      {% if search.results_count > 0 %}
+        {% if search.results_count == 1 %}
+          {{ 'general.search.results_count_singular' | t }}
+        {% else %}
+          {{ 'general.search.results_count_plural' | t: count: search.results_count }}
+        {% endif %}
+      {% endif %}
+    {% endcapture %}
+
+    {% if search.performed %}
+      {% if search.results.size > 0 %}
+        <div class="container">
+          <div class="content-grid">
+            {% for item in search.results %}
+              {% unless item.tags contains "gwp_hidden" or item.type == 'sample' %}
+                <div class="content-grid__item">
+                  {% if item.object_type == 'article' %}
+                    {% include 'blogs-article-card', article: item %}  
+                  {% endif %}
+                </div>
+                {% if forloop.index == 3 %}
+                <div class="content-grid__email-list">
+                  {% include 'join-email-list' %}
+                </div>
+                {% endif %}
+              {% endunless %}
+            {% endfor %}
+          </div>
+        </div>
+
+        {% if paginate.pages > 1 %}
+        {% endif %}
+
+      {% else %}    
+       <p class="p1 u-ta-center">No search results found</p>
+      {% endif %}
+
+    {% endif %}
+
+  </div>
+</div>
+
+{% endpaginate %}

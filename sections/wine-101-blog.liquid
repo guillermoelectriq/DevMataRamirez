@@ -1,0 +1,201 @@
+{{ 'wine-101-lp.css' | asset_url | stylesheet_tag }}
+{{ 'wine-101-blog.css' | asset_url | stylesheet_tag }}
+
+{% assign curr_tag = current_tags | handleize %}
+
+{% comment %}
+    Iterates through Wine 101 Blog JSON metafield to find text content related
+    to the current blog tag (curr_tag).
+    
+    If no tag present on current page, text content defaults to content inputted 
+    in section schema.
+{% endcomment %}
+
+{% for block in section.blocks %}
+    {% assign featured_tag = block.settings.collection_tag | handleize %}
+    {% if featured_tag == curr_tag %}
+        {% assign collection_header = block.settings.collection_header %}
+        {% assign collection_paragraph = block.settings.collection_paragraph %}
+    {% endif %}
+{% endfor %}
+
+<div class="wine-101-blog__container">
+    <div class="wine-101-blog__header-container">
+        <h2 class="wine-101__carousel-header">{% if current_tags %}{{ collection_header }}{% else %}{{ section.settings.header }}{% endif %}</h2>
+        <a class="wine-101__btn wine-101__view-all-btn hide__mobile" style="margin-bottom: 16px;" href="">{{ section.settings.button_text }}</a>
+    </div>
+    <p class="wine-101__paragraph">{% if current_tags %}{{ collection_paragraph }}{% else %}{{ section.settings.paragraph }}{% endif %}</p>
+    <a class="wine-101__btn wine-101__view-all-btn hide__desktop" style="margin-bottom: 24px;" href="{{ section.settings.button_link }}">{{ section.settings.button_text }}</a>
+
+    <div class="wine-101-blog__gallery-container">
+        {%- paginate blog.articles by 9 -%}
+            <div class="wine-101-blog__gallery-wrapper">
+                {% assign article_count = 0 %}
+                {% for article in blog.articles %}
+                    {% assign article_count = article_count | plus: 1 %}
+                    {% include 'wine-101-article-card', article: article %}
+
+                    {% assign num_of_blogs = blog.articles | size %}
+
+                    {% comment %}
+                        Logic for email sign up snippet
+                        on mobile we want to display after every 3 articles
+                        on desktop we want to display after every 6 articles
+                        if there are less then 3 or 6 articels show 
+                        sign up at the end of all articles
+                    {% endcomment %}
+
+                    {% if forloop.index == 3 %}
+                        <div class="hide__desktop join-email-list__wrapper">
+                            {% unless paginate.previous.is_link %}
+                                {% include 'join-email-list' %}
+                            {% endunless %}
+                        </div>
+                    {% endif %}
+
+                    {% if forloop.index == 6 %}
+                        <div class="hide__mobile join-email-list__wrapper">
+                            {% unless paginate.previous.is_link %}
+                                {% include 'join-email-list' %}
+                            {% endunless %}
+                        </div>
+                    {% endif %}
+
+                    {% if article_count <= 2 and article_count == num_of_blogs %}
+                        <div class="hide__desktop join-email-list__wrapper">
+                            {% include 'join-email-list' %}
+                        </div>
+                    {% endif %}
+            
+                    {% if article_count <= 5 and article_count == num_of_blogs %}
+                        <div class="hide__mobile join-email-list__wrapper">
+                            {% include 'join-email-list' %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {% if paginate.next %}
+                <div class="load-more__container">
+                    <button class="load-more__button" data-load-more type="button" data-next-url="{{- paginate.next.url -}}">
+                        {{ section.settings.load_button_text }}
+                    </button>
+                </div>
+            {% endif %}
+
+        {%- endpaginate -%}
+    </div>
+</div>
+
+<style>
+    .hide__desktop {
+        display: none;
+    }
+    .hide__mobile{
+        display: block;
+    }
+    .join-email-list__wrapper {
+        width: 100%;
+    }
+    @media screen and (max-width: 480px){
+        .hide__desktop {
+            display: block;
+        }
+        .hide__mobile{
+            display: none;
+        }
+    }
+
+
+</style>
+
+
+<script>
+    function loadPaginatedArticles(){
+        let loadButton = document.querySelector('.load-more__button');
+        if(!loadButton){
+            return;
+        }
+        loadButton.addEventListener('click',()=>{
+            let url = loadButton.dataset.nextUrl;
+            fetch(url)
+            .then(res => res.text())
+            .then(html => {
+                const div = document.createElement('div');
+                div.innerHTML = html;
+                document.querySelector('.wine-101-blog__gallery-wrapper').innerHTML += div.querySelector('.wine-101-blog__gallery-wrapper').innerHTML;
+                
+                if(div.querySelector('.load-more__button')) {
+                    loadButton.dataset.nextUrl = div.querySelector('.load-more__button').dataset.nextUrl;
+                } else{
+                    loadButton.style.display = 'none';
+                }
+            })
+        })
+    }
+
+    loadPaginatedArticles()
+</script>
+
+{% schema %}
+{
+    "name": "Wine 101 Blog",
+    "settings": [
+        {
+            "id": "header", 
+            "type": "text", 
+            "label": "Header"
+        },
+        {
+            "id": "paragraph", 
+            "type": "text", 
+            "label": "Paragraph"
+        },
+        {
+            "id": "button_text", 
+            "type": "text",
+            "label": "Button Text"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+        },
+        {
+            "id": "load_button_text", 
+            "type": "text",
+            "label": "Load Blogs Button Text",
+            "default": "Show More Wine Guides"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Collection",
+            "type": "Collection",
+            "settings": [
+                {
+                    "id": "collection_tag", 
+                    "type": "text", 
+                    "label": "Collection Tag"
+                },
+                {
+                    "id": "collection_header", 
+                    "type": "text", 
+                    "label": "Collection Header"
+                },
+                {
+                    "id": "collection_paragraph", 
+                    "type": "text", 
+                    "label": "Collection Paragraph"
+                }
+            ]
+        }
+    ],
+    "presets": [
+    {
+        "name": "Wine 101 Blog",
+        "category": "ADVANCED LAYOUT"
+    }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,131 @@
+{{ 'wine-101-lp.css' | asset_url | stylesheet_tag }}
+{{ 'wine-101-featured.css' | asset_url | stylesheet_tag }}
+
+{% comment %} 
+    IF url: blogs/wine-101/tagged/[tag-handle]
+        Iterates through all the blogs containing [tag-handle], searching for the article which also contains the 'Featured' tag, to display to the user.
+        This featured article will be referenced as: featured_article.
+
+    ELSE url: blogs/wine-101
+        Uses schema content to populate content fields.
+{% endcomment %}
+
+{% assign curr_tag_handle = current_tags | handleize %}
+
+{% if current_tags %}
+    {% for block in section.blocks %}
+        {% assign featured_tag = block.settings.featured_collection_tag | handleize %}
+        {% if featured_tag == curr_tag_handle %}
+            {% assign featured_article = block.settings.featured_article %}
+            {% assign featured_text = block.settings.featured_text %}
+        {% endif %}
+    {% endfor %}
+
+    {% if featured_article != blank %}
+        <div class="wine-101-featured__container {% if section.settings.reverse_content == true %}reverse__content{% endif %}">
+            <div class="wine-101-featured__img-wrapper">
+                <img src="{{ featured_article.image | img_url: 'master' }}" alt="{{ featured_article.title }}">
+            </div>
+            <div class="wine-101-featured__text-content__container">
+                <div class="wine-101-featured__text-content">
+                    <p class="wine-101__featured-text">{{ featured_text }}</p>
+                    <h2 class="wine-101__header">{{ featured_article.title }}</h2>
+                    <div class="wine-101__paragraph">{{ featured_article.excerpt_or_content | truncate: 200 }}</div>
+                    <a class="wine-101__btn" href="{{ featured_article.url }}">{{ section.settings.button_text }}</a>
+                </div>
+            </div>
+        </div>
+    {% else %} 
+        {% for article in blog.articles %}  
+            {% for tag in article.tags %}
+                {% assign temp_tag = tag | handleize %}
+                {% if curr_tag_handle == temp_tag %}
+                    {% assign featured_article = article %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+        <div class="wine-101-featured__container {% if section.settings.reverse_content == true %}reverse__content{% endif %}">
+            <div class="wine-101-featured__img-wrapper">
+                <img src="{{ featured_article.image | img_url: 'master' }}" alt="{{ featured_article.title }}">
+            </div>
+            <div class="wine-101-featured__text-content__container">
+                <div class="wine-101-featured__text-content">
+                    <p class="wine-101__featured-text">{{ featured_text }}</p>
+                    <h2 class="wine-101__header">{{ featured_article.title }}</h2>
+                    <div class="wine-101__paragraph">{{ featured_article.excerpt_or_content | truncate: 200 }}</div>
+                    <a class="wine-101__btn" href="{{ featured_article.url }}">{{ section.settings.button_text }}</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+{% else %}
+    <div class="wine-101-featured__container {% if section.settings.reverse_content == true %}reverse__content{% endif %}">
+        <div class="wine-101-featured__img-wrapper">
+            <img src="{{ section.settings.featured_article.image | img_url: 'master' }}" alt="{{ section.settings.featured_article.title }}">
+        </div>
+        <div class="wine-101-featured__text-content__container">
+            <div class="wine-101-featured__text-content">
+                <p class="wine-101__featured-text">{{ section.settings.featured_text }}</p>
+                <h2 class="wine-101__header">{{ section.settings.featured_article.title }}</h2>
+                <div class="wine-101__paragraph">{{ section.settings.featured_article.excerpt_or_content | truncate: 200 }}</div>
+                <a class="wine-101__btn" href="{{ section.settings.featured_article.url }}">{{ section.settings.button_text }}</a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Wine 101 Featured",
+    "settings": [
+    {
+        "id": "button_text", 
+        "type": "text",
+        "label": "Button Text",
+        "default": "Read More"
+    },
+    {
+        "id": "featured_article", 
+        "type": "article", 
+        "label": "Featured Article"
+    },
+    {
+        "id": "featured_text", 
+        "type": "text", 
+        "label": "Featured Title"
+    }
+    ],
+    "blocks": [
+        {
+            "name": "Collection",
+            "type": "Collection",
+            "settings": [
+                {
+                    "id": "featured_collection_tag", 
+                    "type": "text", 
+                    "label": "Featured Collection Tag"
+                },
+                {
+                    "id": "featured_article", 
+                    "type": "article", 
+                    "label": "Featured Article"
+                },
+                {
+                    "id": "featured_text", 
+                    "type": "text", 
+                    "label": "Featured Title"
+                }
+            ]
+        }
+    ],
+    "presets": [
+    {
+        "name": "Wine 101 Featured",
+        "category": "ADVANCED LAYOUT"
+    }
+    ]
+}
+{% endschema %}

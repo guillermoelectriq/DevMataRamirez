@@ -1,0 +1,166 @@
+{
+    "sections": {
+      "main": {
+        "type": "main-page",
+        "disabled": true,
+        "settings": {
+          "padding_top": 28,
+          "padding_bottom": 28
+        }
+      },
+      "16573313979df7b7c8": {
+        "type": "wine-101-nav",
+        "blocks": {
+          "41385b81-10e8-4bca-ab38-ee3baf8a3179": {
+            "type": "Navigation",
+            "settings": {
+              "nav_tab": "essential wine guides",
+              "nav_link": "",
+              "nav_tag_handle": "Essential Wine Guides"
+            }
+          },
+          "91ded208-1ebe-4654-bc86-5b95e40e552d": {
+            "type": "Navigation",
+            "settings": {
+              "nav_tab": "types of wine & grapes",
+              "nav_link": "shopify:\/\/blogs\/wine-101",
+              "nav_tag_handle": "Types Of Wine & Grapes"
+            }
+          },
+          "4d14477b-f7a1-48ff-a984-3e838877173d": {
+            "type": "Navigation",
+            "settings": {
+              "nav_tab": "recipes & wine pairings",
+              "nav_link": "shopify:\/\/blogs\/wine-101",
+              "nav_tag_handle": "Recipes & Wine Pairings"
+            }
+          },
+          "a8019dc5-81f1-45be-8b74-341a277d0435": {
+            "type": "Navigation",
+            "settings": {
+              "nav_tab": "serving wine",
+              "nav_link": "shopify:\/\/blogs\/wine-101",
+              "nav_tag_handle": "Wine Serving Tips"
+            }
+          },
+          "5e554c0f-352d-424e-94dc-e4e8694a55cf": {
+            "type": "Navigation",
+            "settings": {
+              "nav_tab": "All Wine 101",
+              "nav_link": "shopify:\/\/blogs\/wine-101",
+              "nav_tag_handle": ""
+            }
+          }
+        },
+        "block_order": [
+          "41385b81-10e8-4bca-ab38-ee3baf8a3179",
+          "91ded208-1ebe-4654-bc86-5b95e40e552d",
+          "4d14477b-f7a1-48ff-a984-3e838877173d",
+          "a8019dc5-81f1-45be-8b74-341a277d0435",
+          "5e554c0f-352d-424e-94dc-e4e8694a55cf"
+        ],
+        "settings": {
+        }
+      },
+      "165793035908040c83": {
+        "type": "wine-101-lp-featured",
+        "settings": {
+          "reverse_content": false,
+          "featured_article": "wine-101\/the-ultimate-guide-to-sweet-wine",
+          "featured_text": "featured wine guide",
+          "button_text": "Read More"
+        }
+      },
+      "165733228831bbfa17": {
+        "type": "wine-101-guides-carousel",
+        "settings": {
+          "header": "essential wine guides",
+          "paragraph": "We're going to start high level with guides on white, red, rosé, sparkling, and dessert wines. From there, we're going to break down each varietal, including its history, flavor profile, interesting facts, and best foods to pair it with. Then, we'll provide general vino advice, from the glassware you should be using to the proper serving temperatures.",
+          "tag_handle": "Essential Wine Guides",
+          "button_text": "view all essential wine guides"
+        }
+      },
+      "1657331648a6f7c750": {
+        "type": "wine-101-email-list",
+        "settings": {
+          "header": "Join Our Email List",
+          "paragraph": "Stay up to date on Insider deals and wine education!"
+        }
+      },
+      "1657930506859c277f": {
+        "type": "wine-101-lp-featured",
+        "settings": {
+          "reverse_content": true,
+          "featured_article": "wine-101\/pinot-grigio-wine-guide",
+          "featured_text": "featured types of wine & grapes",
+          "button_text": "Read More"
+        }
+      },
+      "1657332391305d7f67": {
+        "type": "wine-101-guides-carousel",
+        "settings": {
+          "header": "types of wine & grapes",
+          "paragraph": "Learn about the most popular grapes and wine blends in the world. From Cabernet to Pinot, and every varietal in between, our in-depth guides break down everything you need to know about whatever wine you’re interested in. Learn about the history, flavor profile, best food pairings, and much more.",
+          "tag_handle": "Types Of Wine & Grapes",
+          "button_text": "View all types of wine & grapes"
+        }
+      },
+      "165793154672248676": {
+        "type": "wine-101-lp-featured",
+        "settings": {
+          "reverse_content": false,
+          "featured_article": "wine-101\/apple-pumpkin-sangria",
+          "featured_text": "Featured recipes & wine pairings",
+          "button_text": "Read More"
+        }
+      },
+      "1657332507ef0e7884": {
+        "type": "wine-101-guides-carousel",
+        "settings": {
+          "header": "Recipes & wine pairings",
+          "paragraph": "We’ve got your wine needs covered, so here are some tips and ideas for you to make the most out of feasting and hosting.",
+          "tag_handle": "Recipes & Wine Pairings",
+          "button_text": "view all recipes & wine pairings"
+        }
+      },
+      "1658135422dd878207": {
+        "type": "wine-101-lp-featured",
+        "settings": {
+          "reverse_content": true,
+          "featured_article": "wine-101\/why-and-when-to-decant-wine",
+          "featured_text": "featured wine serving tips",
+          "button_text": "Read More"
+        }
+      },
+      "165792021442ee814f": {
+        "type": "wine-101-guides-carousel",
+        "settings": {
+          "header": "Serving wine",
+          "paragraph": "Wine tastes great as is, but things like decanting a wine or serving it at the right temperature or in the proper glassware can make a difference the more experienced you become!",
+          "tag_handle": "Wine Serving Tips",
+          "button_text": "View all wine serving tips"
+        }
+      },
+      "16582850185607e75a": {
+        "type": "wine-101-btn",
+        "settings": {
+          "button_text": "View All Wine 101",
+          "button_link": "shopify:\/\/blogs\/wine-101"
+        }
+      }
+    },
+    "order": [
+      "main",
+      "16573313979df7b7c8",
+      "165793035908040c83",
+      "165733228831bbfa17",
+      "1657331648a6f7c750",
+      "1657930506859c277f",
+      "1657332391305d7f67",
+      "165793154672248676",
+      "1657332507ef0e7884",
+      "1658135422dd878207",
+      "165792021442ee814f",
+      "16582850185607e75a"
+    ]
+  }

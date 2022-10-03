@@ -1,0 +1,29 @@
+{{ 'wine-101-btn.css' | asset_url | stylesheet_tag }}
+
+<div class="wine-101-btn__wrapper">
+    <a class="wine-101-btn__container" href="{{ section.settings.button_link }}">{{ section.settings.button_text }}</a>
+</div>
+
+{% schema %}
+{
+    "name": "Wine 101 Button",
+    "settings": [
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+        }
+    ],
+    "presets": [
+    {
+        "name": "Wine 101 Button",
+        "category": "ADVANCED LAYOUT"
+    }
+    ]
+}
+{% endschema %}

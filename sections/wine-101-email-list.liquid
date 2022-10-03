@@ -1,0 +1,54 @@
+{{ 'wine-101-lp.css' | asset_url | stylesheet_tag }}
+{{ 'wine-101-email-list.css' | asset_url | stylesheet_tag }}
+
+<div class="join-email-list__container">
+    <h2>{{ section.settings.header }}</h2>
+    <p>{{ section.settings.paragraph }}</p>
+
+    {% form 'customer' %}
+        <div class="email-input__container">
+            <div class="email">
+                <input type="email" name="contact[email]" placeholder="Your Email Address" />
+            </div>
+
+            <div class="submit">
+                <input type="submit" value="Sign up" />
+            </div>
+        </div>
+    {% endform %}
+</div>
+
+{% schema %}
+{
+    "name": "Wine 101 Email",
+    "settings": [
+        {
+            "id": "header", 
+            "type": "text", 
+            "label": "Header"
+        },
+        {
+            "id": "paragraph", 
+            "type": "text", 
+            "label": "Paragraph"
+        }
+    ],
+    "presets": [
+    {
+        "name": "Wine 101 Email",
+        "category": "ADVANCED LAYOUT"
+    }
+    ]
+}
+{% endschema %}
+
+<script>
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    if(urlSearchParams.get('form_type') == 'contact'){
+        var submit_email = document.querySelector('.email-input__container .email')
+        var submit_btn = document.querySelector('.email-input__container .submit input')
+
+        submit_email.style.display = 'none';
+        submit_btn.value = 'Submitted';
+    }
+</script>

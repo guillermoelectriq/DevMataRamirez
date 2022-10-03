@@ -1,0 +1,52 @@
+{{ 'wine-101-lp.css' | asset_url | stylesheet_tag }}
+{{ 'wine-101-featured.css' | asset_url | stylesheet_tag }}
+
+<div class="wine-101-featured__container {% if section.settings.reverse_content == true %}reverse__content{% endif %}">
+    <div class="wine-101-featured__img-wrapper">
+        <img src="{{ section.settings.featured_article.image | img_url: 'master' }}">
+    </div>
+    <div class="wine-101-featured__text-content__container">
+        <div class="wine-101-featured__text-content">
+            <p class="wine-101__featured-text">{{ section.settings.featured_text }}</p>
+            <h2 class="wine-101__header">{{ section.settings.featured_article.title }}</h2>
+            <div class="wine-101__paragraph">{{ section.settings.featured_article.excerpt_or_content | truncate: 200 }}</div>
+            <a class="wine-101__btn" href="{{ section.settings.featured_article.url }}">{{ section.settings.button_text }}</a>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Wine 101 LP Featured",
+    "settings": [
+    {
+        "id": "reverse_content",
+        "type": "checkbox",
+        "label": "Flip content",
+        "info": "Toggle checkbox to reverse content order."
+    },
+    {
+        "id": "featured_article", 
+        "type": "article", 
+        "label": "Featured Article"
+    },
+    {
+        "id": "featured_text", 
+        "type": "text", 
+        "label": "Featured Title"
+    },
+    {
+        "id": "button_text", 
+        "type": "text",
+        "label": "Button Text",
+        "default": "Read More"
+    }
+    ],
+    "presets": [
+    {
+        "name": "Wine 101 LP Featured",
+        "category": "ADVANCED LAYOUT"
+    }
+    ]
+}
+{% endschema %}

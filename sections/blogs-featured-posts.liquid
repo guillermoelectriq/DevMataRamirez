@@ -1,0 +1,86 @@
+{{ 'blogs-featured-posts.css' | asset_url | stylesheet_tag }}
+
+<div class="blogs-featured-posts__container">
+    <h2 class="section-header">{{ section.settings.header }}</h2>
+    <div class="blogs-featured-posts__flex-container">
+        <a href="{{ section.settings.main_feature_blog.url }}" class="blogs-featured-posts__main-feature">
+            <div class="blog-img-wrapper">
+                <img src="{{ section.settings.main_feature_blog.image | img_url: 'master' }}" loading="lazy">
+            </div>
+            <div class="blog-information">
+                <p class="blog-tag">{{ section.settings.main_feature_tag }}</p>
+                <h4 class="blog-title">{{ section.settings.main_feature_blog.title }}</h4>
+                <p class="blog-excerpt">{{ section.settings.main_feature_blog.excerpt_or_content | truncate: 200 }}</p>
+                <div class="blog-time-to-read">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 15L11.586 12.586C11.2109 12.211 11.0001 11.7024 11 11.172V5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div> {% if section.settings.main_feature_blog.metafields.custom.time_to_read.value != blank %}{{ section.settings.main_feature_blog.metafields.custom.time_to_read.value }} min read {% else %}In Review{% endif %}</div>
+                </div>
+            </div>
+        </a>
+        <div class="blogs-featured-posts__sub-feature">
+            {% for block in section.blocks limit: 4 %}
+                <a href="{{ block.settings.sub_feature_blog.url }}" class="blogs-featured-posts__sub-feature-posts">
+                    <div class="blog-info">
+                        <h4 class="blog-title">{{ block.settings.sub_feature_blog.title }}</h4>
+                        <div class="blog-time-to-read">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 15L11.586 12.586C11.2109 12.211 11.0001 11.7024 11 11.172V5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div> {% if block.settings.sub_feature_blog.metafields.custom.time_to_read.value != blank %}{{ block.settings.sub_feature_blog.metafields.custom.time_to_read.value }} min read {% else %}In Review{% endif %}</div>
+                        </div>
+                    </div>
+                    <div class="blog-img-wrapper">
+                        <img src="{{ block.settings.sub_feature_blog.image | img_url: 'master' }}" loading="lazy">
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Blogs: Featured Blogs",
+    "settings": [
+        {
+            "id": "header", 
+            "type": "text", 
+            "label": "Header"
+        },
+        {
+            "type": "article",
+            "id": "main_feature_blog",
+            "label": "Main Featured Article"
+        },
+        {
+            "id": "main_feature_tag", 
+            "type": "text", 
+            "label": "Article Tag"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "Posts",
+            "name": "Posts",
+            "settings": [
+                {
+                    "type": "article",
+                    "id": "sub_feature_blog",
+                    "label": "Sub Featured Article"
+                }
+            ]
+        }
+    ],
+    "presets": [
+    {
+        "name": "Blogs: Featured Posts",
+        "category": "ADVANCED LAYOUT"
+    }
+    ]
+}
+{% endschema %}
+
