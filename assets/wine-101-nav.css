@@ -1,0 +1,55 @@
+.wine-101-nav__wrapper {
+    height: fit-content;
+    width: 100%;
+}
+.wine-101-nav__container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    padding: 16px;
+    transition: all 0.15s ease-in;
+    top: 0;
+}
+.wine-101-nav__container a {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: #000000;
+    text-decoration: none;
+}
+.nav__sticky {
+    position: fixed;
+    background: white;
+    z-index: 100;
+}
+.scrolling__up {
+    opacity: 1;
+}
+.scrolling__down {
+    opacity: 0;
+}
+@media screen and (max-width: 480px){
+    .wine-101-nav__container {
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        left: 0;
+        justify-content: flex-start;
+    }
+    .wine-101-nav__container a {
+        white-space: nowrap;
+    }
+    .wine-101-nav__container::-webkit-scrollbar {
+        width: 2px;
+        height: 2px;
+    }
+    .wine-101-nav__container::-webkit-scrollbar-thumb {
+        background: #121212;
+        opacity: 0.6;
+        border-radius: 1px;
+    }
+}

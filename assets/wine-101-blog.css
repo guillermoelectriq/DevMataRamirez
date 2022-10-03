@@ -1,0 +1,76 @@
+.wine-101-blog__container {
+    width: 100%;
+    max-width: 1343px; 
+    padding: 32px;
+    margin: 0 auto;
+}
+.wine-101-blog__header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.wine-101-blog__gallery-container {
+    width: 100%;
+}
+.wine-101-blog__gallery-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+.wine-101__paragraph {
+    max-width: 624px;
+    margin-bottom: 32px;
+}
+.hide__desktop {
+    display: none;
+}
+.hide__mobile {
+    display: block;
+}
+.wine-101-blog__gallery-container  .load-more__button {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: capitalize;
+    color: #212322;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    width: 100%;
+    max-width: 406px;
+    height: 57px;
+    background: #FFFFFF;
+    border: 1px solid #212322;
+    margin: 0 auto;
+    cursor: pointer;
+    margin-top: 52px;
+}
+.wine-101-blog__gallery-container .join-email-list__container {
+    width: 100%;
+    max-width: auto;
+}
+@media screen and (max-width: 768px){
+    .wine-101-blog__gallery-wrapper {
+        gap: 16px;
+    }
+}
+@media screen and (max-width: 550px){
+    .hide__desktop {
+        display: block;
+    }
+    .hide__mobile {
+        display: none;
+    }
+    .wine-101-blog__container {
+        padding: 32px 20px;
+    }
+    .email-input__container .email input {
+        padding: 0;
+    }
+}

@@ -1,0 +1,26 @@
+.wine-101-btn__wrapper {
+    width: 100%;
+    padding: 0 16px;
+}
+.wine-101-btn__container {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: capitalize;
+    color: #212322;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 100%;
+    max-width: 406px;
+    height: 57px;
+    background: #FFFFFF;
+    border: 1px solid #212322;
+    margin: 0 auto;
+    cursor: pointer;
+    margin-top: 52px;
+    text-decoration: none;
+}

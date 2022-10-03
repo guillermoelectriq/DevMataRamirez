@@ -1,0 +1,65 @@
+.wine-101__featured-text {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0;
+    margin-bottom: 16px;
+}
+.wine-101__header {
+    font-family: 'Georgia';
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 36px;
+    text-transform: capitalize;
+    color: #000000;
+    margin: 0;
+    margin-bottom: 16px;
+}
+.wine-101__carousel-header {
+    font-family: 'Georgia';
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    text-transform: capitalize;
+    color: #000000;
+    margin: 0;
+    margin-bottom: 16px;
+}
+.wine-101__paragraph {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    margin: 0;
+    margin-bottom: 16px;
+}
+.wine-101__btn {
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration-line: underline;
+    color: #000000;
+    text-transform: capitalize;
+}
+.wine-101__view-all-btn {
+    font-weight: 600;
+}
+@media screen and (max-width: 480px){
+    .wine-101__featured-text {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .wine-101__header {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .wine-101__carousel-header {
+        font-size: 30px;
+        line-height: 34px;
+    }
+}

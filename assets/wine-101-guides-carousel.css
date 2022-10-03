@@ -1,0 +1,111 @@
+.wine-101-guides-carousel__container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 0;
+}
+.wine-101-guides-carousel__header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.wine-101-guides-carousel__container .wine-101__paragraph {
+    max-width: 624px;
+    margin-bottom: 32px;
+}
+.wine-101-guides-carousels__splide {
+    margin: 0 auto;
+}
+.wine-101-guides-carousel__card-container .splide {
+    visibility: visible;
+}
+.wine-101-guides-carousel__card-container .splide__pagination {
+    display: none;
+}
+.splide__pagination-progress__container {
+    position: relative;
+    margin-top: 28px;
+}
+.wine-101-guides-carousel__splide .my-slider-progress {
+    height: 8px;
+    background: #ccc;
+    position: absolute;
+    width: calc(100% - 184px);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+.wine-101-guides-carousel__splide .my-slider-progress-bar {
+    height: 8px;
+    background: #666666;
+    transition: width 400ms ease;
+    width: 0;
+    display: block !important;
+}
+.wine-101-guides-carousel__card-container .my-slider-progress {
+    display: block;
+}
+.wine-101-guides-carousel__splide .splide__arrows {
+    display: flex;
+    justify-content: space-between;
+}
+.wine-101-guides-carousel__splide .splide__arrow {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+.wine-101-guides-carousel__splide .splide__slide {
+    max-width: 515px;
+}
+.wine-101-guides-carousel__splide .splide__slide img {
+    height: 515px;
+}
+.hide__desktop {
+    display: none;
+}
+.hide__mobile {
+    display: block;
+}
+@media screen and (max-width: 1350px){
+    .wine-101-guides-carousel__container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .wine-101-guides-carousel__splide .splide__slide {
+        max-width: 400px;
+    }
+    .wine-101-guides-carousel__splide .splide__slide img {
+        height: 400px;
+    }
+}
+@media screen and (max-width: 550px){
+    .my-slider-progress {
+        display: block;
+    }
+    .wine-101-guides-carousel__container {
+        padding: 32px 16px;
+    }
+    .wine-101-guides-carousel__card-container .splide__track {
+        margin-bottom: 16px;
+    }
+    .wine-101-guides-carousel__splide .splide__slide {
+        width: 60% !important;
+        max-width: 60%;
+    }
+    .wine-101-guides-carousel__splide .splide__slide img {
+        height: 100%;
+    }
+    .wine-101-guides-carousel__splide .my-slider-progress {
+        width: 100%;
+    }
+    .wine-101-guides-carousel__splide .splide__arrows {
+        display: none;
+    }
+    .hide__desktop {
+        display: block;
+    }
+    .hide__mobile {
+        display: none;
+    }
+}
