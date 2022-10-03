@@ -1,0 +1,96 @@
+.blogs-featured-posts__blog-listing {
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    background-color: #FBFBFB;
+}
+.blogs-featured-posts__blog-listing .blog-img-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 38%;
+    height: 0;
+    overflow: hidden;
+}
+.blogs-featured-posts__blog-listing .blog-img-wrapper img {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    -o-object-fit:cover;
+        object-fit:cover;
+    width: 100%;
+    height: 100%;
+}
+.blogs-featured-posts__blog-listing .blog-information {
+    padding: 32px;
+    background-color: #FBFBFB;
+}
+.blogs-featured-posts__blog-listing .blog-tag {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0;
+    margin-bottom: 24px;
+}
+.blogs-featured-posts__blog-listing .blog-title {
+    font-family: 'Georgia';
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 30px;
+    text-transform: capitalize;
+    color: #000000;
+    margin: 0;
+    margin-bottom: 24px;
+}
+.blogs-featured-posts__blog-listing .blog-excerpt {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    margin-bottom: 24px;
+}
+.blogs-featured-posts__blog-listing .blog-time-to-read {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    gap: 10px;
+    margin: 0;
+}
+@media screen and (max-width: 480px){
+    .wine-101-blog__gallery-wrapper {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .blogs-featured-posts__blog-listing .blog-information {
+        padding: 24px 16px;
+        background-color: #FBFBFB;
+    }
+    .blogs-featured-posts__blog-listing .blog-tag {
+        font-size: 13px;
+        line-height: 16px;
+        margin-bottom: 8px;
+    }
+    .blogs-featured-posts__blog-listing .blog-title {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 8px;
+    }
+    .blogs-featured-posts__blog-listing .blog-excerpt {
+        margin-bottom: 8px;
+    }
+    .blogs-featured-posts__blog-listing .blog-time-to-read {
+        gap: 14px;
+    }
+    .blogs-featured-posts__blog-listing .blog-time-to-read svg {
+        height: 20px;
+    }
+}
